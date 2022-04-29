@@ -10,7 +10,11 @@ namespace Lesson1_HomeWork1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!!!");
+            Console.Write("Введите имя:");
+            string name = Console.ReadLine();
+            DateTime dateTime = DateTime.Now;
+            Console.WriteLine($"Привет, {name}, сегодня:{dateTime} !!!");
+            Console.ReadKey();
         }
     }
 }
