@@ -10,7 +10,19 @@ namespace Lesson2_HomeWork2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
+            MiddleTemperature(23.4f, 30.9f);
+            Console.ReadKey();
+        }
+
+        static void MiddleTemperature(float minTemperature, float maxTemperature)
+        {
+            float middleTemperature = (maxTemperature + minTemperature) / 2;
+            Console.WriteLine($"Middle Temperature:{middleTemperature}");
+        }
+
+        static void EnterToMonthNumber(int number)
+        {
+
         }
     }
 }
