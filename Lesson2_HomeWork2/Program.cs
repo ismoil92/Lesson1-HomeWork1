@@ -32,13 +32,13 @@ namespace Lesson2_HomeWork2
         /// </summary>
         enum Week
         {
-            Понедельник = 1,
-            Вторник,
-            Среда,
-            Четверг,
-            Пятница,
-            Суббота,
-            Воскресенье
+            Понедельник = 0b_0000_0001,
+            Вторник = 0b_0000_0010,
+            Среда = 0b_0000_0100,
+            Четверг = 0b_0000_1000,
+            Пятница = 0b_0001_0000,
+            Суббота = 0b_0010_0000,
+            Воскресенье = 0b_0100_000
         }
         static void Main(string[] args)
         {
@@ -174,21 +174,41 @@ namespace Lesson2_HomeWork2
         /// </summary>
         public static void StructureWorkingWeek()
         {
-            string office1 = "Office 1";
-            string office2 = "Office 2";
+
             Console.WriteLine("\t\t\t\t  Расписание рабочих дней");
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine();
-            Console.WriteLine($"{Week.Понедельник}||\t  {Week.Вторник}|| \t{Week.Среда}||\t   {Week.Четверг}|| \t{Week.Пятница}|| \t{Week.Суббота}|| \t{Week.Воскресенье}||");
-            Console.WriteLine("####################################################################################################");
-            Console.WriteLine($"   {office2}||    {office2}||  {office2}||   {office2}||   {office2}||      {office2}||          {office2}||");
-            Console.WriteLine($"           ||    {office1}||  {office1}||   {office1}||   {office1}||");
+            string _office1 = "Office 1";
+            string _office2 = "Office 2";
+            Week Office1 = Week.Вторник | Week.Среда | Week.Четверг | Week.Пятница;
+            Week Office2 = Week.Понедельник | Week.Вторник | Week.Среда | Week.Четверг | Week.Пятница | Week.Суббота | Week.Воскресенье;
+
+            Week allWorksWeek = (Week)0b_1111_1111;
+            Week office1 = allWorksWeek & Office1;
+            Week office2 = allWorksWeek & Office2;
+            bool workingoffice1 = office1 == Office1;
+            bool workingoffice2 = office2 == Office2;
+
+            if (workingoffice1)
+            {
+                Console.WriteLine($"{Week.Понедельник}||\t  {Week.Вторник}|| \t{Week.Среда}||\t   {Week.Четверг}|| \t{Week.Пятница}|| \t{Week.Суббота}|| \t{Week.Воскресенье}||");
+                Console.WriteLine("####################################################################################################");
+                Console.WriteLine($"           ||    {_office1}||  {_office1}||   {_office1}||   {_office1}||");
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+            if (workingoffice2)
+            {
+                Console.WriteLine($"{Week.Понедельник}||\t  {Week.Вторник}|| \t{Week.Среда}||\t   {Week.Четверг}|| \t{Week.Пятница}|| \t{Week.Суббота}|| \t{Week.Воскресенье}||");
+                Console.WriteLine("####################################################################################################");
+                Console.WriteLine($"   {_office2}||    {_office2}||  {_office2}||   {_office2}||   {_office2}||      {_office2}||      {_office2}||");
+            }
         }
 
         /// <summary>
         /// Выбор домашнего задачи
         /// </summary>
-        public static void SelectMethodByHomeWork()
+       public static void SelectMethodByHomeWork()
         {
             Console.WriteLine("Домашная задача!!!");
             Console.WriteLine("=======================");
